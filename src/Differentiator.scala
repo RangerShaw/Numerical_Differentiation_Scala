@@ -4,8 +4,6 @@ class Differentiator {
   val h0: Double = 1.0
   val eps: Double = 0.00000001
 
-  def log2(x: Double): Double = log(x) / log(2)
-
   /**
    * Repeat traversing the stream
    * until previous and current elements are within Eps
@@ -42,6 +40,8 @@ class Differentiator {
    * Improved algorithm to calculate the differentiation
    */
   def improvedDifferentiate(f: Double => Double, x: Double): Double = {
+    def log2(x: Double): Double = log(x) / log(2)
+
     def order(ls: Stream[Double]): Double = round(log2((ls(0) - ls(2)) / (ls(1) - ls(2)) - 1))
 
     def elimError(n: Double, ls: Stream[Double]): Stream[Double] = {

@@ -3,7 +3,7 @@ import System.currentTimeMillis
 
 object Main {
   val differentiator = new Differentiator()
-  val testFunc: Double => Double = (x: Double) => pow(x, 2)   // f(x)=x^2
+  val testFunc: Double => Double = (x: Double) => pow(x, 2) // f(x)=x^2
 
   def main(args: Array[String]): Unit = {
     // Test the correctness of the algorithm
@@ -22,6 +22,9 @@ object Main {
   }
 
   def timeTest(): Unit = {
+    // TODO: This test is NOT rigorous
+    // because the differentiator will reuse previous results
+    // and subsequent calculations are always faster than previous ones
     val t1 = getTime(differentiator.differentiate)
     val t2 = getTime(differentiator.improvedDifferentiate)
     println("[Time Test]")
